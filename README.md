@@ -11,3 +11,7 @@ python3 -m http.server
 ```
 
 Then navigate to `http://localhost:8000/index.html` to see the homepage.
+
+## Running the tests
+
+Install dependencies with `pip install -r requirements.txt` and then execute `pytest`.
