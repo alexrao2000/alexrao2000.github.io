@@ -1,6 +1,16 @@
-# Alex Rao Website
+# Personal Website
 
-This repository contains a simple static site. A lightweight test suite is included to verify the footer displays the current year.
+This repository contains the source for Alex Rao's personal website. The live version is served via **GitHub Pages**.
+
+## Preview locally
+
+To view the site locally, start a simple HTTP server in this directory and open the page in your browser.
+
+```bash
+python3 -m http.server
+```
+
+Then navigate to `http://localhost:8000/index.html` to see the homepage.
 
 ## Running the tests
 
