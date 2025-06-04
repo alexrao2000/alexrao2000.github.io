@@ -59,12 +59,15 @@
         <h1>Alex Rao</h1>
         <p>Software Developer | Aspiring Innovator</p>
         <div class="social-links">
-            <a href="https://github.com/alexrao2000" target="_blank">GitHub</a>
-            <a href="https://www.linkedin.com/in/alex-rao-346b47156/" target="_blank">LinkedIn</a>
+            <a href="https://github.com/alexrao2000" target="_blank" rel="noopener noreferrer">GitHub</a>
+            <a href="https://www.linkedin.com/in/alex-rao-346b47156/" target="_blank" rel="noopener noreferrer">LinkedIn</a>
             <a href="mailto:arao519@berkeley.edu">Email</a>
         </div>
         <!--The script gets the current year. If you want the year to be constant, just replace the script with the year you want-->
-        <footer>&copy; <script>document.write( new Date().getFullYear() );</script> Alex Rao. All rights reserved.</footer>
+        <footer>&copy; <span id="year"></span> Alex Rao. All rights reserved.</footer>
+        <script>
+            document.getElementById('year').textContent = new Date().getFullYear();
+        </script>
     </div>
 </body>
 </html>
