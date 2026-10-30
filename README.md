@@ -20,7 +20,7 @@ python3 -m http.server
 
 Then open `http://localhost:8000/`.
 
-The site uses a responsive layout, a small shared stylesheet, and progressive scroll reveals. Motion is disabled when the visitor has requested reduced motion in their operating system.
+The site uses a warm, text-first layout with serif headings, simple project lists, and responsive pages. Assets are local, with no external fonts or animation dependencies.
 
 ## Running the tests
 
