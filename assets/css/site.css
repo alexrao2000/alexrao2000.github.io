@@ -44,15 +44,21 @@ p { margin-bottom: 18px; }
 .section-heading h2 { margin-bottom: 0; }
 .section-heading > p { max-width: 320px; margin-bottom: 0; color: var(--muted); font-size: 14px; }
 .section-heading .text-link { flex-shrink: 0; font-size: 13px; }
-.work-entry { display: grid; grid-template-columns: 130px 1fr; gap: 24px; margin: 24px 0; }
-.role-dates { display: grid; gap: 5px; margin: 0; }
-.role-dates > div { display: grid; grid-template-columns: 36px 1fr; align-items: baseline; gap: 8px; }
-.role-dates dt { color: var(--muted); font-size: 10px; letter-spacing: .06em; text-transform: uppercase; }
-.role-dates dd { margin: 0; color: var(--ink); font-size: 12px; white-space: nowrap; }
-.work-entry > .role-dates { align-content: start; padding-top: 3px; }
-.work-entry h3 { margin-bottom: 3px; }
-.work-entry h3 span { color: var(--muted); font-size: 14px; font-weight: 400; }
-.work-entry p { margin-bottom: 0; color: var(--muted); font-size: 14px; }
+.work-entry, .timeline-item { position: relative; padding: 0 0 34px 28px; border-left: 1px solid var(--line); }
+.work-entry::before, .timeline-item::before { position: absolute; top: 9px; left: -5px; width: 9px; height: 9px; border: 1px solid #88977b; border-radius: 50%; background: var(--paper); content: ''; }
+.section-heading + .work-entry::before, .timeline-item:first-child::before { border-color: var(--accent); background: var(--accent); box-shadow: 0 0 0 4px var(--paper); }
+.work-entry:last-child, .timeline-item:last-child { padding-bottom: 0; border-left-color: transparent; }
+.role-heading { display: flex; align-items: start; justify-content: space-between; gap: 24px; }
+.role-title { min-width: 0; }
+.work-entry h3, .role-title h2 { margin: 0 0 4px; font: 400 25px/1.25 var(--serif); letter-spacing: -.025em; }
+.role-title .role-line { margin: 0; color: var(--ink); font-size: 13px; line-height: 1.6; }
+.role-title .role-location { margin: 7px 0 0; color: var(--muted); font-size: 12px; }
+.role-dates { flex-shrink: 0; display: grid; grid-template-columns: repeat(2, 72px); gap: 16px; margin: 2px 0 0; }
+.role-dates > div { display: grid; gap: 3px; align-content: start; }
+.role-dates > div + div { padding-left: 16px; border-left: 1px solid var(--line); }
+.role-dates dt { color: var(--muted); font-size: 10px; line-height: 1.4; letter-spacing: .09em; text-transform: uppercase; }
+.role-dates dd { margin: 0; color: var(--ink); font-size: 12px; line-height: 1.6; white-space: nowrap; font-variant-numeric: tabular-nums; }
+.work-entry .work-description { max-width: 510px; margin: 13px 0 0; color: var(--muted); font-size: 14px; }
 .project-list { margin: 0; padding: 0; list-style: none; }
 .project-list li + li { margin-top: 25px; }
 .project-list h3 { display: flex; justify-content: space-between; gap: 18px; }
@@ -72,11 +78,9 @@ p { margin-bottom: 18px; }
 .body-copy, .about-copy, .project-description { color: var(--muted); }
 .about-copy { max-width: 650px; }
 .about-grid { margin-bottom: 36px; }
-.timeline-item { display: grid; grid-template-columns: 145px 1fr; gap: 30px; padding: 30px 0 38px; border-top: 1px solid var(--line); }
-.timeline-meta { color: var(--muted); font-size: 12px; }
-.timeline-meta .role-dates { margin-bottom: 14px; }
-.timeline-content h2 { margin-bottom: 4px; font-size: 27px; }
-.timeline-content .role-line { margin-bottom: 16px; color: var(--ink); font-size: 14px; }
+.timeline { padding-top: 32px; margin-bottom: 44px; border-top: 1px solid var(--line); }
+.timeline-item { padding-bottom: 42px; }
+.timeline-content { max-width: 650px; padding-top: 20px; }
 .timeline-content > p, .detail-list { color: var(--muted); font-size: 14px; }
 .detail-list { padding-left: 18px; }
 .detail-list li + li { margin-top: 9px; }
@@ -120,13 +124,14 @@ p { margin-bottom: 18px; }
   .section-heading { align-items: start; gap: 15px; }
   .section-heading h2 { font-size: 26px; }
   .section-heading > p { display: none; }
-  .work-entry { grid-template-columns: 1fr; gap: 5px; }
-  .work-entry h3 span { display: block; margin-top: 2px; }
   .project-list h3 { flex-direction: column; gap: 2px; }
-  .timeline-item { grid-template-columns: 1fr; gap: 16px; }
-  .role-dates { display: flex; flex-wrap: wrap; gap: 6px 24px; }
-  .timeline-meta .role-dates { margin-bottom: 8px; }
   .stack-groups { grid-template-columns: 1fr; }
   .education-card { flex-direction: column; gap: 4px; }
   .contact-row { grid-template-columns: 65px 1fr; gap: 14px; font-size: 14px; }
+}
+@media (max-width: 480px) {
+  .work-entry, .timeline-item { padding-left: 22px; }
+  .role-heading { flex-direction: column; gap: 14px; }
+  .role-dates { grid-template-columns: repeat(2, 80px); margin-top: 0; }
+  .work-entry .work-description { margin-top: 16px; }
 }
