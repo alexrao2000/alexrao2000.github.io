@@ -14,6 +14,15 @@
       <p class="lede">A selection of my work across AI systems, full-stack applications, and interactive software.</p>
     </header>
     <section class="project-grid" aria-label="Selected projects">
+      <article id="curie" class="card project-card">
+        <span class="mono-label">CurieTech · Open-source agent platform</span>
+        <h2>Curie</h2>
+        <p class="project-description">An open-source platform I work on at CurieTech for running AI agents as co-workers in a team’s own infrastructure.</p>
+        <p class="project-detail">Teams can delegate work, follow progress, approve restricted actions, and inspect the result. The Software Factory takes an issue through planning, implementation, review, and CI, then returns a pull request or merge request for the team to accept. The same platform also supports SRE agents for Kubernetes investigations.</p>
+        <p class="project-detail">My work spans agent orchestration, integrations, and the testing and deployment systems around them. The platform includes shared memory, model configuration, tracing, and cost visibility, with a Python runtime and Rust CLI.</p>
+        <div class="stack-line"><span class="chip">Python</span><span class="chip">Rust</span><span class="chip">Kubernetes</span><span class="chip">Helm</span><span class="chip">Langfuse</span><span class="chip">Valkey</span></div>
+        <div class="project-links"><a href="https://github.com/curie-eng/curie" target="_blank" rel="noopener noreferrer">Source code <span aria-hidden="true">↗</span><span class="visually-hidden"> for Curie</span></a><a href="https://github.com/curie-eng/curie/blob/main/docs/README.md" target="_blank" rel="noopener noreferrer">Documentation<span class="visually-hidden"> for Curie</span></a><a href="https://vimeo.com/1231115133/eadc6eb936" target="_blank" rel="noopener noreferrer">Software Factory demo<span class="visually-hidden"> for Curie</span></a></div>
+      </article>
       <article id="llm-router" class="card project-card"><span class="mono-label">CurieTech · Client work</span><h2>LLM Router</h2><p class="project-description">A Python model-routing system that chooses between Claude, GPT, GLM, and DeepSeek using LiteLLM. On SWE-Bench Lite, the resume reports about 66% cost savings while staying within about one percentage point of the Opus 5.5 baseline success rate.</p><div class="stack-line"><span class="chip">Python</span><span class="chip">LiteLLM</span><span class="chip">Claude</span><span class="chip">GPT</span><span class="chip">GLM</span><span class="chip">DeepSeek</span></div><div class="card-foot"><a class="text-link" href="experience.html">Related experience <span class="arrow" aria-hidden="true">→</span></a></div></article>
       <article id="unified-lms" class="card project-card">
         <span class="mono-label">C4Y · Product engineering</span>
