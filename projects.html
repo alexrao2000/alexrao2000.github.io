@@ -4,7 +4,7 @@
   <meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><meta name="theme-color" content="#f8f7f2">
   <meta name="description" content="Selected projects by Alex Rao, spanning AI model routing, learning platforms, web and mobile apps, dashboards, and games.">
   <link rel="icon" href="favicon.ico" sizes="16x16 32x32 48x48">
-  <title>Projects — Alex Rao</title><link rel="stylesheet" href="assets/css/site.css"><script defer src="assets/js/site.js"></script>
+  <title>Projects — Alex Rao</title><link rel="stylesheet" href="assets/css/site.css?v=project-code-1"><script defer src="assets/js/site.js"></script>
 </head>
 <body>
   <a class="skip-link" href="#main">Skip to content</a>
@@ -55,6 +55,26 @@
         <p class="project-detail">It compares changes to roles, prompts, and models, then evaluates the selected version on a separate set of tasks. The report shows how quality, cost, and latency changed, including when the results are inconclusive.</p>
         <div class="stack-line"><span class="chip">Python</span><span class="chip">Agent evaluation</span><span class="chip">Experiment design</span></div>
         <div class="project-links"><a href="https://github.com/alexrao2000/Alpha" target="_blank" rel="noopener noreferrer">Source code <span aria-hidden="true">↗</span><span class="visually-hidden"> for Alpha</span></a><a href="https://github.com/alexrao2000/Alpha/blob/main/docs/experiments.md" target="_blank" rel="noopener noreferrer">Experiment guide<span class="visually-hidden"> for Alpha</span></a></div>
+        <details class="project-code">
+          <summary>Python source · Measuring regression risk</summary>
+          <p>Even when no regressions show up in testing, a small sample leaves uncertainty. This function computes an upper bound on the regression rate.</p>
+          <pre tabindex="0"><code>def regression_upper(k: int, n: int, alpha: float) -&gt; float:
+    if type(k) is not int or type(n) is not int or not 0 &lt;= k &lt;= n or not 0 &lt; alpha &lt; 1:
+        raise ValueError(&#x27;Invalid binomial bound arguments.&#x27;)
+    if n == 0 or k == n:
+        return 1.0
+    if k == 0:
+        return -math.expm1(math.log(alpha) / n)
+    low, high = 0.0, 1.0
+    for _ in range(70):
+        middle = (low + high) / 2
+        if binomial_cdf(k, n, middle) &gt; alpha:
+            low = middle
+        else:
+            high = middle
+    return high</code></pre>
+          <p class="code-source"><a href="https://github.com/alexrao2000/Alpha/blob/e0b24b1813545bb81106f2981ffa8e1346ef004a/alpha/evaluation.py#L45-L59">View source on GitHub</a> · <a href="assets/code-notices.txt">MIT license</a></p>
+        </details>
       </article>
       <article id="niche" class="card project-card">
         <span class="mono-label">Data tools · Browser analysis</span>
@@ -63,6 +83,25 @@
         <p class="project-detail">The default mode runs DuckDB inside a sandboxed browser frame. It shows the SQL and evidence behind each finding, with query results kept in the browser.</p>
         <div class="stack-line"><span class="chip">TypeScript</span><span class="chip">React</span><span class="chip">DuckDB-Wasm</span></div>
         <div class="project-links"><a href="https://github.com/alexrao2000/Niche" target="_blank" rel="noopener noreferrer">Source code <span aria-hidden="true">↗</span><span class="visually-hidden"> for Niche</span></a><a href="https://github.com/alexrao2000/Niche/blob/main/README.md" target="_blank" rel="noopener noreferrer">Readme<span class="visually-hidden"> for Niche</span></a></div>
+        <details class="project-code">
+          <summary>TypeScript source · Checking dataset URLs</summary>
+          <p>Before fetching a dataset, Niche checks its full origin against the allowlist and requires HTTPS outside local development.</p>
+          <pre tabindex="0"><code>export function approvedDataUrl(value: string, origins: string[]): URL {
+  const url = new URL(value);
+  if (
+    ![&#x27;https:&#x27;, &#x27;http:&#x27;].includes(url.protocol) ||
+    url.username ||
+    url.password ||
+    url.hash ||
+    !origins.includes(url.origin)
+  )
+    throw new Error(&#x27;Choose a URL from an administrator-approved data origin.&#x27;);
+  if (url.protocol === &#x27;http:&#x27; &amp;&amp; ![&#x27;127.0.0.1&#x27;, &#x27;localhost&#x27;, &#x27;[::1]&#x27;].includes(url.hostname))
+    throw new Error(&#x27;Dataset downloads require HTTPS.&#x27;);
+  return url;
+}</code></pre>
+          <p class="code-source"><a href="https://github.com/alexrao2000/Niche/blob/bd333c216c939d574a5009577cdce23df70fad62/src/enterprise/protocol.ts#L22-L35">View source on GitHub</a> · <a href="assets/code-notices.txt">MIT license</a></p>
+        </details>
       </article>
       <article id="poem" class="card project-card">
         <span class="mono-label">Games · Playable prototype</span>
@@ -98,6 +137,32 @@
         <p class="project-detail">It imports historical Google Tasks data and syncs recent activity. Daily check-ins and undated tasks share a workspace that works on phones, while a separate metrics view charts task history, wake-up times, and weight trends. Date bucketing keeps a task finished after midnight attached to its intended day.</p>
         <div class="stack-line"><span class="chip">Python</span><span class="chip">FastAPI</span><span class="chip">Supabase</span><span class="chip">Google Tasks API</span></div>
         <div class="project-links"><a href="https://github.com/alexrao2000/Stellar" target="_blank" rel="noopener noreferrer">Source code <span aria-hidden="true">↗</span><span class="visually-hidden"> for Stellar</span></a><a href="https://github.com/alexrao2000/Stellar/blob/main/README.md" target="_blank" rel="noopener noreferrer">Readme<span class="visually-hidden"> for Stellar</span></a></div>
+      </article>
+      <article id="hri" class="card project-card">
+        <span class="mono-label">Human–robot interaction · Team research prototype</span>
+        <h2>HRI · Voice and Tablet Controls</h2>
+        <p class="project-description">Our team built a voice interface and an Android tablet app for a Stretch robot. The prototype supported research into how people understand and control robot settings through voice, a visual interface, or both.</p>
+        <p class="project-detail">The Flask API interpreted spoken requests and gave spoken feedback. The tablet app used Kotlin and Jetpack Compose to offer visual controls.</p>
+        <div class="stack-line"><span class="chip">Python</span><span class="chip">Flask</span><span class="chip">Kotlin</span><span class="chip">Jetpack Compose</span></div>
+        <details class="project-code">
+          <summary>Python example · One setting, two interfaces</summary>
+          <p>This illustrative example models the volume change. A spoken request is interpreted first, while the tablet supplies a value directly. Both paths return the same setting and feedback.</p>
+          <pre tabindex="0"><code>def set_volume(percent):
+    if type(percent) is not int or not 0 &lt;= percent &lt;= 100:
+        return {&quot;error&quot;: &quot;Choose a whole number from 0 to 100.&quot;}
+    return {&quot;volume&quot;: percent, &quot;feedback&quot;: f&quot;Volume set to {percent}%.&quot;}
+
+
+def from_voice(transcript, interpret):
+    command = interpret(transcript)
+    if command.get(&quot;action&quot;) != &quot;volume&quot;:
+        return {&quot;error&quot;: &quot;I couldn&#x27;t understand that setting.&quot;}
+    return set_volume(command.get(&quot;percent&quot;))
+
+
+def from_tablet(slider_value):
+    return set_volume(slider_value)</code></pre>
+        </details>
       </article>
       <article id="secure-files" class="card project-card">
         <span class="mono-label">Coursework · Computer security</span>
