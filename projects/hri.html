@@ -1,0 +1,63 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#f8f7f2">
+  <meta name="description" content="A team research prototype for configuring a robot by voice, by tablet, or with both.">
+  <title>HRI · Voice and Tablet Controls — Alex Rao</title>
+  <link rel="icon" href="../favicon.ico" sizes="16x16 32x32 48x48">
+  <link rel="stylesheet" href="../assets/css/site.css?v=project-articles-1">
+  <script defer src="../assets/js/site.js"></script>
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+  <header class="site-header">
+    <div class="header-inner">
+      <a class="brand" href="../index.html" aria-label="Alex Rao, home">alex rao<span class="name-dot">.</span></a>
+      <nav class="primary-nav" aria-label="Main navigation">
+        <a href="../index.html">Home</a>
+        <a href="../experience.html">Experience</a>
+        <a href="../projects.html" aria-current="true">Projects</a>
+        <a href="../about.html">About</a>
+        <a href="../contact.html">Contact</a>
+      </nav>
+    </div>
+  </header>
+  <main id="main" class="page-shell">
+    <article class="page-content">
+      <header class="page-intro">
+        <p><a class="text-link" href="../projects.html#hri"><span aria-hidden="true">←</span> Back to Projects</a></p>
+        <h1>HRI · Voice and Tablet Controls</h1>
+        <p class="lede">A team research prototype for configuring a robot by voice, by tablet, or with both.</p>
+      </header>
+      <section class="section project-article">
+        <h2>One robot setting through two interfaces</h2>
+        <p>Our team built two interfaces for a Stretch robot. The voice path used a Flask API to interpret spoken requests and give spoken feedback. The visual path used an Android tablet app built with Kotlin and Jetpack Compose.</p>
+        <p>The research question was how the interface affects a person’s understanding of the robot. A spoken command lets someone stay focused on the robot, while a visible control can show which setting is being changed. The prototype gave the team a way to explore voice, tablet, and combined interaction.</p>
+        <h2>Changing the volume</h2>
+        <p>In this illustrative Python example, the voice interface interprets a request before it can act. The tablet supplies a value directly. Both paths use the same validation and feedback.</p>
+        <pre class="article-code" tabindex="0"><code>def set_volume(percent):
+    if type(percent) is not int or not 0 &lt;= percent &lt;= 100:
+        return {&quot;error&quot;: &quot;Choose a whole number from 0 to 100.&quot;}
+    return {&quot;volume&quot;: percent, &quot;feedback&quot;: f&quot;Volume set to {percent}%.&quot;}
+
+
+def from_voice(transcript, interpret):
+    command = interpret(transcript)
+    if command.get(&quot;action&quot;) != &quot;volume&quot;:
+        return {&quot;error&quot;: &quot;I couldn&#x27;t understand that setting.&quot;}
+    return set_volume(command.get(&quot;percent&quot;))
+
+
+def from_tablet(slider_value):
+    return set_volume(slider_value)</code></pre>
+      </section>
+    </article>
+  </main>
+  <footer class="site-footer">
+    <p>© <span data-year>2026</span> Alex Rao</p>
+    <p><a href="../contact.html">Contact</a> · <a href="https://github.com/alexrao2000" target="_blank" rel="noopener noreferrer">GitHub</a> · <a href="https://www.linkedin.com/in/alex-rao-346b47156/" target="_blank" rel="noopener noreferrer">LinkedIn</a></p>
+  </footer>
+</body>
+</html>
