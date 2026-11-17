@@ -33,6 +33,7 @@ h3 { margin-bottom: 7px; font-size: 16px; font-weight: 600; line-height: 1.5; }
 p { margin-bottom: 18px; }
 .eyebrow { margin-bottom: 18px; color: var(--muted); font-size: 12px; letter-spacing: .09em; text-transform: uppercase; }
 .intro { max-width: 660px; padding: 4px 0 46px; }
+.intro .eyebrow { text-transform: none; }
 .intro h1 { margin-bottom: 26px; font-size: clamp(48px, 8vw, 68px); }
 .name-dot { color: #a36548; }
 .intro .intro-line { color: var(--ink); font-size: 20px; line-height: 1.65; }
