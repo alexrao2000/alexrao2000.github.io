@@ -1,0 +1,14 @@
+{
+  "name": "resume-download",
+  "private": true,
+  "type": "module",
+  "engines": {
+    "node": "24.x"
+  },
+  "scripts": {
+    "test": "node --test --experimental-test-module-mocks"
+  },
+  "dependencies": {
+    "@vercel/blob": "2.9.0"
+  }
+}

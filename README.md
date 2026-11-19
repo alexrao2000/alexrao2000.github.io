@@ -25,3 +25,19 @@ The site uses a warm, text-first layout with serif headings, simple project list
 ## Running the tests
 
 Install dependencies with `pip install -r requirements.txt` and execute `pytest`.
+
+## Résumé download
+
+The `_resume-download` directory contains a separate Vercel function that serves
+the current PDF from private Blob storage. The private source repository publishes
+canonical `Resume.pdf` to one fixed object whenever that file changes on its main
+branch. Each download reads the current object with caching disabled.
+
+Keep PDFs out of this repository and service deployment bundles. The endpoint
+accepts no version or filename parameters. Its storage credential belongs in
+Vercel environment variables and the private publisher's Actions secret.
+
+Run the service checks with `npm ci --prefix _resume-download` and
+`npm test --prefix _resume-download` using Node 24. Deploy the service from
+`_resume-download` after changing its code. GitHub Pages continues to publish the
+portfolio separately.
