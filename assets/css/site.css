@@ -38,6 +38,13 @@ p { margin-bottom: 18px; }
 .name-dot { color: #a36548; }
 .intro .intro-line { color: var(--ink); font-size: 20px; line-height: 1.65; }
 .intro p { max-width: 610px; color: var(--muted); }
+.ascii-album { width: fit-content; max-width: 100%; margin: 24px 0 0; }
+.ascii-album pre {
+  margin: 0; padding: 12px; border: 1px solid #ebc8ac; border-radius: 8px;
+  background: #f8dfca; color: #583b30;
+  font: clamp(5.5px, 1.75vw, 8px)/1.2 ui-monospace, 'Courier New', monospace;
+}
+.ascii-album figcaption { margin-top: 8px; font-size: 13px; }
 .personal-links { display: flex; flex-wrap: wrap; gap: 22px; margin-top: 26px; font-size: 14px; }
 .personal-links a { text-decoration-color: #bbc3ad; }
 .personal-section { padding: 32px 0 38px; border-top: 1px solid var(--line); }
