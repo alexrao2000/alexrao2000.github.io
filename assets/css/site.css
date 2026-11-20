@@ -69,6 +69,7 @@ p { margin-bottom: 18px; }
 .personal-note { max-width: 610px; color: var(--muted); }
 .personal-note p:last-child { margin-bottom: 0; }
 .page-intro { margin-bottom: 42px; max-width: 670px; }
+.about-intro { margin-bottom: 18px; }
 .page-intro .eyebrow { display: none; }
 .lede { color: var(--muted); font-size: 18px; line-height: 1.75; }
 .section { padding: 38px 0; border-top: 1px solid var(--line); }
